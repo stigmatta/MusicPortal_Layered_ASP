@@ -38,7 +38,6 @@ namespace MusicPortal_Layered_ASP.DLL.Repositories
             }
         }
 
-
         public async Task Save()
         {
             await db.SaveChangesAsync();

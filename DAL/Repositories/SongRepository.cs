@@ -26,13 +26,19 @@ namespace MusicPortal_Layered_ASP.DLL.Repositories
         {
             return await _context.Songs.FindAsync(id);
         }
+
+        public async Task<Song?> Get(string name)
+        {
+            return await _context.Songs.FirstOrDefaultAsync(s => s.Title == name);
+        }
+
         public async Task<IEnumerable<Song>?> GetAll()
         {
-            return await _context.Songs.ToListAsync();
+            return await _context.Songs.Include(s=>s.Genre).ToListAsync();
         }
         public void Update(Song obj)
         {
-            _context.Songs.Update(obj);
+            _context.Entry(obj).State = EntityState.Modified;
         }
     }
 }

@@ -9,10 +9,7 @@ namespace MusicPortal_Layered_ASP.DLL.Context
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Song> Songs { get; set; }
 
-        public MusicContext(DbContextOptions<MusicContext> options) : base(options)
-        {
-            Database.EnsureCreated();
-        }
+        public MusicContext(DbContextOptions<MusicContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

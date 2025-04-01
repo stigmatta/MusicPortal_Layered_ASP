@@ -37,7 +37,12 @@ namespace MusicPortal_Layered_ASP.DLL.Repositories
 
         public void Update(Genre obj)
         {
-            _context.Genres.Update(obj);
+            _context.Entry(obj).State = EntityState.Modified;
+        }
+
+        public Task<Genre?> Get(string name)
+        {
+            return _context.Genres.FirstOrDefaultAsync(g => g.Name == name);
         }
     }
 }
